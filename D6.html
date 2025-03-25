@@ -117,12 +117,25 @@
       */
 
       const changeUrls = function () {
-        const links = document.querySelectorAll("a");
+        //     const links = document.querySelectorAll("a");
 
-        links.forEach(function (link) {
-          if (!link.closest("footer")) {
-            link.href = "https://www.google.com";
-          }
+        //     links.forEach(function (link) {
+        //       if (!link.closest("footer")) {
+        //         link.href = "https://www.google.com";
+        //       }
+        //     });
+        //   };
+        //   changeUrls();
+
+        //correzione
+
+        const links = document.querySelectorAll("a:not(footer a)");
+        console.log(links);
+
+        links.forEach((a) => {
+          a.href = "";
+          a.innerText = "Vai a Google";
+          a.target = "_blank";
         });
       };
       changeUrls();
@@ -132,14 +145,25 @@
     */
 
       const addToTheSecond = function () {
-        const secondList = document.getElementById("secondList");
+        //     const secondList = document.getElementById("secondList");
 
-        const newListItem = document.createElement("li");
-        newListItem.innerText = "Nuova lista";
+        //     const newListItem = document.createElement("li");
+        //     newListItem.innerText = "Nuovo elemento";
 
-        secondList.appendChild(newListItem);
+        //     secondList.appendChild(newListItem);
+        //   };
+
+        //   addToTheSecond();
+
+        //Dinamico con correzione
+
+        const secondUl = document.getElementById("secondList");
+
+        const li = document.createElement("li");
+        li.innerText = txt;
+
+        secondUl.appendChild(li);
       };
-
       addToTheSecond();
 
       /* ESERCIZIO 6
@@ -161,6 +185,7 @@
       const hideFirstUl = function () {
         const toHide = document.getElementById("firstList");
         toHide.style.display = "none";
+        //toHide.remove()
       };
       hideFirstUl();
 
@@ -174,6 +199,8 @@
         for (i = 0; i < greenList.length; i++) {
           greenList[i].style.backgroundColor = "Green";
         }
+
+        //forEach(ul => { ul.style.backgroundColor = "Green" })
       };
 
       paintItGreen();
@@ -183,10 +210,10 @@
 
       const makeItClickable = function () {
         const title = document.querySelector("h1");
-        title.style.cursor = "pointer";
-        title.style.display = "inline-block";
+        title.style.cursor = "pointer"; //per la mano sul cursore
+        title.style.display = "inline-block"; //cosi da cliccare solo sulla parola e non su tutto il blocco
         title.addEventListener("click", function () {
-          title.innerText = title.textContent.slice(0, -1);
+          title.innerText = title.innerText.slice(0, -1);
         });
       };
 
@@ -196,13 +223,21 @@
       */
 
       const revealFooterLink = function () {
-        const clickFooter = document.getElementsByTagName("footer")[0];
-        const link = clickFooter.getElementsByTagName("a")[0];
+        //     const clickFooter = document.getElementsByTagName("footer")[0];
+        //     const link = clickFooter.getElementsByTagName("a")[0];
 
-        clickFooter.style.cursor = "pointer";
-        clickFooter.addEventListener("click", function () {
-          alert("L'URL del link è: " + link);
-        });
+        //     clickFooter.style.cursor = "pointer";
+        //     clickFooter.addEventListener("click", function () {
+        //       alert("L'URL del link è: " + link);
+        //     });
+        //   };
+
+        //Correzione
+        const footerA = document.querySelector("footer");
+        footer.onclick = function () {
+          const footerA = document.querySelector("footer a");
+          alert(footerA.href);
+        };
       };
 
       revealFooterLink();
